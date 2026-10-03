@@ -20,12 +20,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-                bat 'docker rm -f %CONTAINER% || exit /b 0'
-                bat 'docker run -d --name %CONTAINER% -p 8081:8080 %IMAGE%:latest'
-                sleep time: 15, unit: 'SECONDS'
-            }
-        }
+    steps {
+        bat 'docker rm -f shopping-app || exit 0'
+        bat 'docker run -d -p 8080:8080 --name shopping-app shopping-app:5'
+    }
+}
 
         stage('Selenium Tests') {
             steps { bat 'mvn -B test -Pselenium -Dtest="Selenium*Test"' }
