@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    tools { maven 'Maven3'; jdk 'JDK11' }   // configure these names in Jenkins > Global Tool Configuration
+   tools { maven 'Maven3.9.16'; jdk 'JDK25' }   // configure these names in Jenkins > Global Tool Configuration
     environment { IMAGE = 'shopping-app'; CONTAINER = 'shopping-app' }
 
     stages {
