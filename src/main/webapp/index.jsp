@@ -8,7 +8,7 @@
 <h2>Shop by category</h2>
 <div class="grid">
   <% for (String c : new String[]{"Electronics","Fashion","Stationery","Home"}) { %>
-    <a class="card cat" href="<%= ctx %>/products?category=<%= c %>"><h3><%= c %></h3></a>
+  <a class="card cat" href="<%= ctx %>/products?category=<%= c %>"><h3><%= c %></h3></a>
   <% } %>
 </div>
 <%@ include file="footer.jsp" %>

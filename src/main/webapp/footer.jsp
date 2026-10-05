@@ -1,3 +1,3 @@
 </main>
-<footer class="footer">© 2026 ShopEasy — DevOps Mini Project</footer>
+<footer class="footer"> ShopEasy — Makes Your Shopping Easy</footer>
 </body></html>
