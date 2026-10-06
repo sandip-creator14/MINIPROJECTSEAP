@@ -29,10 +29,9 @@ pipeline {
     }
 }
 
-        stage('Selenium Tests') {
-            steps { bat 'mvn -B test -Pselenium -Dtest="Selenium*Test"' }
-            post { always { junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml' } }
-        }
+       stage('Selenium Tests') {
+    steps { bat 'mvn -B test -Pselenium -Dtest="Selenium*Test" -DbaseUrl=http://localhost:8081/shopping-app/' }
+}
 
         stage('Push to Docker Hub') {
             steps {
