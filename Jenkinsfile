@@ -1,21 +1,14 @@
 pipeline {
     agent any
-    tools { maven 'Maven3.9.16'; jdk 'JDK25' }   // configure these names in Jenkins > Global Tool Configuration
+    tools { maven 'Maven3'; jdk 'JDK11' }   // configure these names in Jenkins > Global Tool Configuration
     environment { IMAGE = 'shopping-app'; CONTAINER = 'shopping-app' }
 
     stages {
         stage('Checkout') { steps { checkout scm } }
         stage('Build & Unit Tests') {
-    steps {
-        script {
-            if (isUnix()) {
-                sh 'mvn clean test'
-            } else {
-                bat 'mvn clean test'
-            }
+            steps { sh 'mvn -B clean package' }
+            post { always { junit 'target/surefire-reports/*.xml' } }
         }
-    }
-}
         stage('Archive WAR') { steps { archiveArtifacts artifacts: 'target/shopping-app.war', fingerprint: true } }
         stage('Docker Build') { steps { sh 'docker build -t $IMAGE:${BUILD_NUMBER} -t $IMAGE:latest .' } }
         stage('Deploy') {
