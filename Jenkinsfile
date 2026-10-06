@@ -10,9 +10,8 @@ pipeline {
         stage('Checkout') { steps { checkout scm } }
 
         stage('Build & Unit Tests') {
-            steps { bat 'mvn -B clean package' }
-            post { always { junit 'target/surefire-reports/*.xml' } }
-        }
+    steps { bat 'mvn -B clean package' }
+}
 
         stage('Archive WAR') {
             steps { archiveArtifacts artifacts: 'target/shopping-app.war', fingerprint: true }
