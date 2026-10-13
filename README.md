@@ -23,3 +23,4 @@ Checkout -> Build & unit tests -> Archive WAR -> Docker build -> Deploy -> Selen
 
 ## Next improvement
 MySQL + JDBC so users, orders and carts survive restarts.
+
